@@ -1,0 +1,8 @@
+version: 0.1
+
+#world names go here
+worlds:
+    world:
+        #minecraft time offset 
+        #EX if it were 12:00 and your offset was -6000, it will think it were 6:00
+        offset: 0

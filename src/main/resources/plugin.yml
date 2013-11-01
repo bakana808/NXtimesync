@@ -1,0 +1,6 @@
+name: NXtimesync
+main: com.octopod.nixium.nxtimesync.NXtimesync
+version: 0.1
+description: 'hello'
+
+commands:
