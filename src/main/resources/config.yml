@@ -1,5 +1,8 @@
 version: 0.1
 
+#interval of which it updates (in ms) 
+update-interval: 60000
+
 #world names go here
 worlds:
     world:

@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.bukkit.ChatColor;
+import org.bukkit.World;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -38,11 +40,34 @@ public class Commands implements Listener{
         		String format = date.format(new Date());
         		player.sendMessage(pre + "The current time is " + ChatColor.AQUA + format);
         		player.sendMessage(pre + "NXtimesync " + plugin.getDescription().getVersion() + " by Octopod");
+        		return;
+        		
+        	}
+        	
+        	if(args[1].equalsIgnoreCase("info")){
+        		
+        		YamlConfiguration config = Config.config;
+        		World world = player.getWorld();
+        		
+        		if(config.getConfigurationSection("worlds").getKeys(false).contains(world.getName())){
+        			
+        			try{
+	        			player.sendMessage(
+	        				pre + "The offset in this world is " + ChatColor.AQUA + 
+	        				config.getInt("worlds." + world.getName() + ".offset") + ChatColor.WHITE + " ticks."
+	        			);
+        			}catch(Exception e){}
+        			
+        		}else{
+        			
+        			player.sendMessage(pre + "This world is not affected by this plugin.");
+        			
+        		}
         		
         	}
         	
         }
-               	
+
     }
         
 }

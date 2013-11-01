@@ -34,9 +34,13 @@ public class NXtimesync extends JavaPlugin{
 		if(time < 0){time = time + 24000;}
 		
 		for(String worldname:config.getConfigurationSection("worlds").getKeys(false)){
-			int offset = config.getInt("worlds."+ worldname);
-			long newTime = time + offset;
-			plugin.getServer().getWorld("world").setTime(newTime);
+			try{
+				int offset = config.getInt("worlds."+ worldname);
+				long newTime = time + offset;
+				plugin.getServer().getWorld(worldname).setTime(newTime);
+			}catch(Exception e){
+				console("Couldn't update the time in world \"" + worldname + "\" (misnamed?)");
+			}
 		}
 		
 	}
